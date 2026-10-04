@@ -1,0 +1,63 @@
+### 1. Create account for Mohammad
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{"holderName": "Mohammad"}
+
+> {% client.global.set("acc1", response.body.accountNumber); %}
+
+### 2. Create account for Sameer
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{"holderName": "Sameer"}
+
+> {% client.global.set("acc2", response.body.accountNumber); %}
+
+### 3. Deposit 5000 into account 1
+POST http://localhost:8080/api/accounts/{{acc1}}/deposit
+Content-Type: application/json
+
+{"amount": 5000}
+
+### 4. Withdraw 500 from account 1
+POST http://localhost:8080/api/accounts/{{acc1}}/withdraw
+Content-Type: application/json
+
+{"amount": 500}
+
+### 5. Transfer 1000 from account 1 to account 2
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+
+{"from": "{{acc1}}", "to": "{{acc2}}", "amount": 1000}
+
+### 6. Check account 1 balance
+GET http://localhost:8080/api/accounts/{{acc1}}
+
+### 7. Check account 2 balance
+GET http://localhost:8080/api/accounts/{{acc2}}
+
+### 8. History of account 1
+GET http://localhost:8080/api/accounts/{{acc1}}/history
+
+### ERROR TEST A: withdraw too much
+POST http://localhost:8080/api/accounts/{{acc1}}/withdraw
+Content-Type: application/json
+
+{"amount": 999999}
+
+### ERROR TEST B: negative deposit
+POST http://localhost:8080/api/accounts/{{acc1}}/deposit
+Content-Type: application/json
+
+{"amount": -100}
+
+### ERROR TEST C: account does not exist
+GET http://localhost:8080/api/accounts/AC000
+
+### Quick test
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{"holderName": "Mohammad"}
