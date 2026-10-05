@@ -61,3 +61,12 @@ POST http://localhost:8080/api/accounts
 Content-Type: application/json
 
 {"holderName": "Mohammad"}
+
+### Register
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "shadulla",
+  "password": "test1234"
+}
