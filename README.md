@@ -20,3 +20,5 @@ A Spring Boot backend application for secure bank account management and transac
    ```bash
    git clone [https://github.com/Mohammad-shadulla/bank.git](https://github.com/Mohammad-shadulla/bank.git)
    cd bank
+
+- Added user registration endpoint with BCrypt password hashing and JWT authentication support.
