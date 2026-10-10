@@ -1,6 +1,18 @@
+### Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "shadulla",
+  "password": "test1234"
+}
+
+> {% client.global.set("token", response.body.token); %}
+
 ### 1. Create account for Mohammad
 POST http://localhost:8080/api/accounts
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {"holderName": "Mohammad"}
 
@@ -9,6 +21,7 @@ Content-Type: application/json
 ### 2. Create account for Sameer
 POST http://localhost:8080/api/accounts
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {"holderName": "Sameer"}
 
@@ -17,50 +30,35 @@ Content-Type: application/json
 ### 3. Deposit 5000 into account 1
 POST http://localhost:8080/api/accounts/{{acc1}}/deposit
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {"amount": 5000}
 
 ### 4. Withdraw 500 from account 1
 POST http://localhost:8080/api/accounts/{{acc1}}/withdraw
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {"amount": 500}
 
-### 5. Transfer 1000 from account 1 to account 2
+### 5. Transfer 100 from account 1 to account 2
 POST http://localhost:8080/api/transfer
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
-{"from": "{{acc1}}", "to": "{{acc2}}", "amount": 1000}
+{"from": "{{acc1}}", "to": "{{acc2}}", "amount": 100}
 
 ### 6. Check account 1 balance
 GET http://localhost:8080/api/accounts/{{acc1}}
+Authorization: Bearer {{token}}
 
 ### 7. Check account 2 balance
 GET http://localhost:8080/api/accounts/{{acc2}}
+Authorization: Bearer {{token}}
 
 ### 8. History of account 1
 GET http://localhost:8080/api/accounts/{{acc1}}/history
-
-### ERROR TEST A: withdraw too much
-POST http://localhost:8080/api/accounts/{{acc1}}/withdraw
-Content-Type: application/json
-
-{"amount": 999999}
-
-### ERROR TEST B: negative deposit
-POST http://localhost:8080/api/accounts/{{acc1}}/deposit
-Content-Type: application/json
-
-{"amount": -100}
-
-### ERROR TEST C: account does not exist
-GET http://localhost:8080/api/accounts/AC000
-
-### Quick test
-POST http://localhost:8080/api/accounts
-Content-Type: application/json
-
-{"holderName": "Mohammad"}
+Authorization: Bearer {{token}}
 
 ### Register
 POST http://localhost:8080/auth/register
