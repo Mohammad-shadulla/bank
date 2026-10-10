@@ -1,4 +1,4 @@
-package com.shadulla.bank.controller.controller;
+package com.shadulla.bank.controller;
 
 import com.shadulla.bank.JwtService;
 import com.shadulla.bank.entity.User;
