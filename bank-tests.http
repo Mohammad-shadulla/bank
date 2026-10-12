@@ -8,6 +8,9 @@ Content-Type: application/json
 }
 
 > {% client.global.set("token", response.body.token); %}
+### Who am I
+GET http://localhost:8080/api/me
+Authorization: Bearer {{token}}
 
 ### 1. Create account for Mohammad
 POST http://localhost:8080/api/accounts

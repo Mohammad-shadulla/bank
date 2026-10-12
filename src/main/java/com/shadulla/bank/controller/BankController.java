@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/api")
@@ -72,5 +73,9 @@ public class BankController {
     @GetMapping("/accounts/{number}/history")
     public List<TransactionRecord> history(@PathVariable String number) {
         return service.history(number);
+    }
+    @GetMapping("/me")
+    public Map<String, String> me(Authentication authentication) {
+        return Map.of("username", authentication.getName());
     }
 }
