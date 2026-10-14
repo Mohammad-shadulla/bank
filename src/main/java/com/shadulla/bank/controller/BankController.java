@@ -78,4 +78,9 @@ public class BankController {
     public Map<String, String> me(Authentication authentication) {
         return Map.of("username", authentication.getName());
     }
+    @GetMapping("/accounts/{number}/balance")
+    public Map<String, Object> balance(@PathVariable String number) {
+        Account account = service.getAccount(number);
+        return Map.of("accountNumber", number, "balance", account.getBalance());
+    }
 }

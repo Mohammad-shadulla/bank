@@ -55,6 +55,10 @@ Authorization: Bearer {{token}}
 GET http://localhost:8080/api/accounts/{{acc1}}
 Authorization: Bearer {{token}}
 
+### Balance only
+GET http://localhost:8080/api/accounts/{{acc1}}/balance
+Authorization: Bearer {{token}}
+
 ### 7. Check account 2 balance
 GET http://localhost:8080/api/accounts/{{acc2}}
 Authorization: Bearer {{token}}
