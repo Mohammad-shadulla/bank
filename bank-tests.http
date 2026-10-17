@@ -75,3 +75,10 @@ Content-Type: application/json
   "username": "shadulla",
   "password": "test1234"
 }
+
+### ERROR TEST D: transfer to same account
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{"from": "{{acc1}}", "to": "{{acc1}}", "amount": 100}
