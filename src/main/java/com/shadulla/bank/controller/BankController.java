@@ -83,4 +83,10 @@ public class BankController {
         Account account = service.getAccount(number);
         return Map.of("accountNumber", number, "balance", account.getBalance());
     }
+
+    @DeleteMapping("/accounts/{number}")
+    public Map<String, String> delete(@PathVariable String number) {
+        service.deleteAccount(number);
+        return Map.of("message", "Account deleted");
+    }
 }

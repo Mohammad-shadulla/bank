@@ -85,6 +85,14 @@ public class BankService {
         return transactions.findByFromAccountOrToAccountOrderByCreatedAtDesc(number, number);
     }
 
+    public void deleteAccount(String number) {
+        Account a = getAccount(number);
+        if (a.getBalance().compareTo(BigDecimal.ZERO) != 0) {
+            throw new BankException("Balance must be 0 to delete the account");
+        }
+        accounts.delete(a);
+    }
+
     private void checkAmount(BigDecimal amount) {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new BankException("Amount must be greater than 0");

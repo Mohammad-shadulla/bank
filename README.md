@@ -22,3 +22,12 @@ A Spring Boot backend application for secure bank account management and transac
    cd bank
 
 - Added user registration endpoint with BCrypt password hashing and JWT authentication support.
+
+## Setup
+
+Create the file `src/main/resources/application-local.properties` with these two lines:
+
+    spring.datasource.password=YOUR_DB_PASSWORD
+    jwt.secret=YOUR_LONG_SECRET_KEY_AT_LEAST_32_CHARACTERS
+
+Then run the app with the `local` profile.

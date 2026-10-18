@@ -82,3 +82,24 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {"from": "{{acc1}}", "to": "{{acc1}}", "amount": 100}
+
+### Create temp account (for delete test)
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{"holderName": "Temp"}
+
+> {% client.global.set("acc3", response.body.accountNumber); %}
+
+### Delete temp account (balance 0, should work)
+DELETE http://localhost:8080/api/accounts/{{acc3}}
+Authorization: Bearer {{token}}
+
+### ERROR TEST E: delete account with money
+DELETE http://localhost:8080/api/accounts/{{acc1}}
+Authorization: Bearer {{token}}
+
+### Check deleted account (should say not found)
+GET http://localhost:8080/api/accounts/{{acc3}}
+Authorization: Bearer {{token}}
