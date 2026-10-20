@@ -20,6 +20,7 @@ public class Account {
     private String accountNumber;
 
     private String holderName;
+    private String owner;
 
     @Column(precision = 19, scale = 2)
     private BigDecimal balance = BigDecimal.ZERO;

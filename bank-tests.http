@@ -103,3 +103,34 @@ Authorization: Bearer {{token}}
 ### Check deleted account (should say not found)
 GET http://localhost:8080/api/accounts/{{acc3}}
 Authorization: Bearer {{token}}
+
+### Register second user
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{"username": "sameer", "password": "test1234"}
+
+### Login second user
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{"username": "sameer", "password": "test1234"}
+
+> {% client.global.set("token2", response.body.token); %}
+
+### Create account as second user
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+Authorization: Bearer {{token2}}
+
+{"holderName": "Sameer"}
+
+> {% client.global.set("accS", response.body.accountNumber); %}
+
+### ERROR TEST F: first user tries to read second user's account
+GET http://localhost:8080/api/accounts/{{accS}}
+Authorization: Bearer {{token}}
+
+### My accounts
+GET http://localhost:8080/api/accounts
+Authorization: Bearer {{token}}
