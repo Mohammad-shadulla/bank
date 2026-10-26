@@ -36,6 +36,7 @@ A Spring Boot REST API for bank account management and secure money transfers. E
 | POST | /api/transfer | Transfer money (5 per minute) | Yes |
 | GET | /api/accounts/{number}/history | Transaction history | Yes |
 | DELETE | /api/accounts/{number} | Delete an account (balance must be 0) | Yes |
+| GET | /api/admin/accounts | List all accounts (admin only) | Yes (ADMIN) |
 
 Send the token in the header: `Authorization: Bearer <token>`
 
@@ -82,3 +83,5 @@ Quick flow: register a user, log in, create an account, deposit money, and trans
 * Unit tests for the service layer
 * Swagger / OpenAPI documentation
 * Frontend
+
+* **Role-based access:** users have a USER or ADMIN role stored in the JWT, and the admin-only endpoint `/api/admin/accounts` returns 403 for normal users
