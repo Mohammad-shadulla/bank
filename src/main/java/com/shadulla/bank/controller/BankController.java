@@ -96,4 +96,8 @@ public class BankController {
         service.deleteAccount(number, auth.getName());
         return Map.of("message", "Account deleted");
     }
+    @GetMapping("/admin/accounts")
+    public List<Account> allAccounts() {
+        return service.allAccounts();
+    }
 }

@@ -37,6 +37,10 @@ public class BankService {
         return accounts.findByOwner(owner);
     }
 
+    public List<Account> allAccounts() {
+        return accounts.findAll();
+    }
+
     // used inside the service (no owner check)
     public Account getAccount(String number) {
         return accounts.findByAccountNumber(number)

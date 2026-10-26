@@ -134,3 +134,11 @@ Authorization: Bearer {{token}}
 ### My accounts
 GET http://localhost:8080/api/accounts
 Authorization: Bearer {{token}}
+
+### ADMIN TEST: list all accounts (admin only)
+GET http://localhost:8080/api/admin/accounts
+Authorization: Bearer {{token}}
+
+### ERROR TEST G: normal user tries the admin endpoint (should be 403)
+GET http://localhost:8080/api/admin/accounts
+Authorization: Bearer {{token2}}
