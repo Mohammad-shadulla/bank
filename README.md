@@ -80,7 +80,6 @@ Quick flow: register a user, log in, create an account, deposit money, and trans
 
 ## Planned Improvements
 
-* Unit tests for the service layer
 * Swagger / OpenAPI documentation
 * Frontend
 
