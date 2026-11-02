@@ -80,7 +80,7 @@ Quick flow: register a user, log in, create an account, deposit money, and trans
 
 ## Planned Improvements
 
-* Swagger / OpenAPI documentation
 * Frontend
 
 * **Role-based access:** users have a USER or ADMIN role stored in the JWT, and the admin-only endpoint `/api/admin/accounts` returns 403 for normal users
+* **API documentation:** interactive Swagger UI at `/swagger-ui/index.html` with JWT authorization
